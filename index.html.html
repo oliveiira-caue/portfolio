@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cauê Adolfo — Portfólio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --accent: #3DD68C;
+    --accent2: #1a9e61;
+    --text: #f0f0f0;
+    --muted: #888;
+    --muted2: #666;
+    --tag-bg: rgba(61,214,140,0.1);
+    --tag-border: rgba(61,214,140,0.25);
+    --tag-text: #3DD68C;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .portfolio {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 4rem;
+  }
+
+  /* HEADER */
+  .header {
+    margin-bottom: 3.5rem;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a9e61, #3DD68C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #0a0a0a;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: var(--text);
+  }
+
+  h1 span { color: var(--accent); }
+
+  .role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 0.6rem;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 4px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .bio {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    max-width: 580px;
+  }
+
+  .bio strong { color: var(--text); font-weight: 500; }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 3rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SKILLS */
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .skill-tag {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 5px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    background: var(--surface);
+  }
+
+  .skill-tag.highlight {
+    background: var(--tag-bg);
+    border-color: var(--tag-border);
+    color: var(--tag-text);
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .exp-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .exp-org { font-size: 0.95rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+  .exp-role { font-size: 0.82rem; color: var(--accent); font-family: 'DM Mono', monospace; margin-top: 2px; }
+  .exp-period { font-size: 0.78rem; color: var(--muted2); font-family: 'DM Mono', monospace; margin-top: 4px; }
+  .exp-desc { font-size: 0.83rem; color: var(--muted); margin-top: 8px; line-height: 1.65; }
+
+  /* PROJECTS */
+  .projects-list { display: flex; flex-direction: column; gap: 1rem; }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.35rem 1.5rem;
+    transition: border-color 0.15s;
+  }
+
+  .project-card:hover { border-color: var(--border2); }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-title { font-size: 1rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+
+  .project-badge {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    padding: 3px 9px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .badge-wip { background: rgba(239,150,39,0.12); border: 1px solid rgba(239,150,39,0.3); color: #EF9627; }
+  .badge-done { background: var(--tag-bg); border: 1px solid var(--tag-border); color: var(--tag-text); }
+  .badge-saas { background: rgba(55,138,221,0.12); border: 1px solid rgba(55,138,221,0.3); color: #5BA8F5; }
+
+  .project-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 1rem; }
+
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+
+  .stack-tag {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    padding: 3px 9px;
+    border-radius: 5px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  .project-link {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted2);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+  }
+
+  .project-link:hover { color: var(--accent); }
+
+  /* EDUCATION */
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .edu-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(61,214,140,0.1);
+    border: 1px solid var(--tag-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .edu-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+  .edu-sub { font-size: 0.78rem; color: var(--muted); font-family: 'DM Mono', monospace; margin-top: 3px; }
+
+  /* LINKS */
+  .links-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    background: var(--surface);
+    transition: all 0.15s;
+  }
+
+  .link-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .link-btn.primary { background: var(--tag-bg); border-color: var(--tag-border); color: var(--tag-text); }
+
+  @media (max-width: 600px) {
+    .portfolio { padding: 2rem 1.25rem 3rem; }
+    h1 { font-size: 1.7rem; }
+    .header-top { flex-direction: row; }
+  }
+</style>
+</head>
+<body>
+<div class="portfolio">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div style="flex:1">
+        <h1>Cauê <span>Adolfo</span><br>Oliveira</h1>
+        <div class="role-badge">
+          <div class="dot"></div>
+          fullstack dev junior · backend focus
+        </div>
+      </div>
+      <div class="avatar">CA</div>
+    </div>
+
+    <p class="bio">
+      Desenvolvedor <strong>fullstack junior</strong> com foco em <strong>backend Python</strong>, cursando ADS na <strong>UNAMA</strong> em Belém-PA. Experiência real em ambiente governamental pela <strong>SEPLAD</strong>, onde contribuí com projetos em WordPress e React.js. Apaixonado por construir produtos do zero — de APIs robustas a interfaces que funcionam de verdade.
+    </p>
+
+    <div class="meta-row">
+      <span class="meta-item">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 1.5A4.5 4.5 0 0 1 12.5 6c0 3-4.5 8.5-4.5 8.5S3.5 9 3.5 6A4.5 4.5 0 0 1 8 1.5z" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="6" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        Belém, Pará — Brasil
+      </span>
+      <span class="meta-item">
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M2 6h12" stroke="currentColor" stroke-width="1.2"/></svg>
+        Disponível para oportunidades
+      </span>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-label">stack técnica</div>
+    <div class="skills-grid">
+      <span class="skill-tag highlight">Python</span>
+      <span class="skill-tag highlight">Django</span>
+      <span class="skill-tag highlight">Django REST</span>
+      <span class="skill-tag highlight">Node.js</span>
+      <span class="skill-tag">React.js</span>
+      <span class="skill-tag">Next.js</span>
+      <span class="skill-tag">TypeScript</span>
+      <span class="skill-tag">Tailwind CSS</span>
+      <span class="skill-tag">MySQL</span>
+      <span class="skill-tag">SQLite</span>
+      <span class="skill-tag">AWS S3</span>
+      <span class="skill-tag">REST APIs</span>
+      <span class="skill-tag">WordPress</span>
+      <span class="skill-tag">Git / GitHub</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-label">experiência</div>
+    <div class="exp-card">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-org">SEPLAD — Secretaria de Estado de Planejamento e Administração</div>
+        <div class="exp-role">Desenvolvedor Web</div>
+        <div class="exp-period">2024 – 2025 · Belém, PA</div>
+        <div class="exp-desc">Atuação em projetos institucionais do governo do estado do Pará, desenvolvendo e mantendo aplicações com <strong style="color:#f0f0f0;font-weight:500">WordPress</strong> e <strong style="color:#f0f0f0;font-weight:500">React.js</strong>. Experiência prática com fluxos reais de desenvolvimento em ambiente público, entrega de features e colaboração em equipe.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-label">projetos</div>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Nexus Habitar</div>
+          <span class="project-badge badge-saas">SaaS</span>
+        </div>
+        <p class="project-desc">Plataforma web completa para corretores e imobiliárias, modelo de assinatura mensal. Totalmente white-label — cada cliente recebe o sistema com sua identidade visual. Inclui busca semântica por IA, CRM com funil de leads, agendamento de visitas e mapa interativo via Google Maps.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js 16</span>
+          <span class="stack-tag">React 19</span>
+          <span class="stack-tag">Tailwind CSS 4</span>
+          <span class="stack-tag">Django</span>
+          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">AWS S3</span>
+          <span class="stack-tag">LLM / IA</span>
+        </div>
+        <a class="project-link" href="https://github.com/oliveiira-caue/imobiliaria-fullstack" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          github.com/oliveiira-caue/imobiliaria-fullstack
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Heringer Exclusive Residence</div>
+          <span class="project-badge badge-done">concluído</span>
+        </div>
+        <p class="project-desc">Site institucional para condomínio de alto padrão em Castanhal-PA. Interface sofisticada com animações de scroll nativas via Intersection Observer, componentes acessíveis e design responsivo alinhado à identidade visual do empreendimento.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">shadcn/ui</span>
+          <span class="stack-tag">Lucide React</span>
+        </div>
+        <a class="project-link" href="https://github.com/oliveiira-caue/heringer-exclusive-residence-main" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          github.com/oliveiira-caue/heringer-exclusive-residence-main
+        </a>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-title">Codeflix — Admin de Catálogo</div>
+          <span class="project-badge badge-wip">em andamento</span>
+        </div>
+        <p class="project-desc">Sistema administrativo para gerenciamento de catálogo de streaming. APIs robustas, modelagem relacional de banco de dados e painel para organização de vídeos, gêneros e categorias de forma escalável.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Django</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">MySQL</span>
+        </div>
+        <a class="project-link" href="https://github.com/oliveiira-caue/codeflix-catalog-admin-main" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          github.com/oliveiira-caue/codeflix-catalog-admin-main
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="section">
+    <div class="section-label">idiomas</div>
+    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:1.2rem;width:32px;text-align:center;">🇧🇷</div>
+        <div style="flex:1">
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text);">Português</div>
+          <div style="font-size:0.78rem;color:var(--accent);font-family:'DM Mono',monospace;margin-top:2px;">nativo</div>
+        </div>
+        <div style="display:flex;gap:4px;">
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:1.2rem;width:32px;text-align:center;">🇺🇸</div>
+        <div style="flex:1">
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text);">Inglês</div>
+          <div style="font-size:0.78rem;color:var(--accent);font-family:'DM Mono',monospace;margin-top:2px;">intermediário — bom para leitura e escrita técnica</div>
+        </div>
+        <div style="display:flex;gap:4px;">
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+        <div style="font-size:1.2rem;width:32px;text-align:center;">🇪🇸</div>
+        <div style="flex:1">
+          <div style="font-size:0.9rem;font-weight:700;color:var(--text);">Espanhol</div>
+          <div style="font-size:0.78rem;color:var(--accent);font-family:'DM Mono',monospace;margin-top:2px;">básico</div>
+        </div>
+        <div style="display:flex;gap:4px;">
+          <div style="width:28px;height:6px;border-radius:3px;background:var(--accent);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+          <div style="width:28px;height:6px;border-radius:3px;background:rgba(61,214,140,0.2);"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-label">formação</div>
+    <div class="edu-card">
+      <div class="edu-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3DD68C" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div>
+        <div class="edu-name">Análise e Desenvolvimento de Sistemas</div>
+        <div class="edu-sub">UNAMA · Universidade da Amazônia · Belém, PA · em andamento</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINKS -->
+  <div class="section">
+    <div class="section-label">contato &amp; links</div>
+    <div class="links-row">
+      <a class="link-btn primary" href="https://github.com/oliveiira-caue" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/oliveiira-caue
+      </a>
+      <a class="link-btn" href="mailto:caueadolfooliveira2k18@gmail.com">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 4l7 5 7-5"/></svg>
+        caueadolfooliveira2k18@gmail.com
+      </a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
